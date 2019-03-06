@@ -1,0 +1,30 @@
+<div *ngIf="book">
+
+  <h2>{{book.name | uppercase}} Management</h2>
+  <div>
+    <img src="{{book.imageUrl}}">
+  </div>
+  <div>
+    <label>id:
+      <input [(ngModel)]="book.id" placeholder="id"/>
+    </label>
+  </div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="book.name" placeholder="name"/>
+    </label>
+  </div>
+  <div>
+    <label>author:
+      <input [(ngModel)]="book.author" placeholder="author"/>
+    </label>
+  </div>
+  <div>
+    <label>storage:
+      <input [(ngModel)]="book.storage" placeholder="storage"/>
+    </label>
+  </div>
+
+</div>
+<button (click)="goBack()" nz-button nzType="dashed"><i nz-icon type="left-circle" theme="fill"></i>Cancel</button>
+<button (click)="save()" nz-button nzType="primary"><i nz-icon type="save" theme="fill"></i>Save</button>

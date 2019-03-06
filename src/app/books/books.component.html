@@ -1,0 +1,22 @@
+<app-book-search></app-book-search>
+<h2>Books Management</h2>
+<div>
+<div>
+  <label>book id:
+    <input #bookId />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(bookId.value); bookId.value=''" nz-button nzType="default" nzShape="circle">
+      <i nz-icon type="plus-circle" theme="fill"></i>
+  </button>
+</div>
+<ul class="books">
+  <li *ngFor="let book of books" (click)="onSelect(book)">
+    <a routerLink="/book/detail/{{book.id}}">
+      <span class="badge">{{book.id}}</span>{{book.name}}
+    </a>
+    <button class="delete" title="delete book" nz-button nzType="danger" nzShape="circle"  nzSize="small"
+      (click)="delete(book)"><i nz-icon type="delete" theme="fill"></i></button>
+  </li>
+</ul>
+</div>

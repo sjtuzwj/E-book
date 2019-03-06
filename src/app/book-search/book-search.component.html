@@ -1,0 +1,20 @@
+<div id="search-component">
+  <h2>Book Search</h2>
+  <i nz-icon type="search"></i>
+  <input #searchBox id="search-box" (input)="search(searchBox.value)"  placeholder="Input to search books"/>
+  <ul class="search-result">
+    <li *ngFor="let book of books$ | async" >
+      <div *ngIf="mutable(); then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>
+            <a routerLink="/book/detail/{{book.id}}">
+              {{book.name}}
+            </a>
+        </ng-template>
+        <ng-template #elseBlock>
+            <a routerLink="/book-ro/detail/{{book.id}}">
+              {{book.name}}
+            </a>
+        </ng-template>
+    </li>
+  </ul>
+</div>

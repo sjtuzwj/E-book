@@ -1,0 +1,31 @@
+<div *ngIf="book" class='browser'>
+  <h2>{{book.name | uppercase}} Browser</h2>
+  <div>
+    <img src="{{book.imageUrl}}">
+  </div>
+  <div>
+    <label>id:
+    </label>
+    <br>
+    {{book.id}}
+  </div>
+  <div>
+    <label>name:
+    </label>
+    <br>
+    {{book.name}}
+  </div>
+  <div>
+    <label>author:
+    </label>
+    <br>
+    {{book.name}}
+  </div>
+  <div>
+    <label>storage:
+    </label>
+    <br>
+    {{book.storage}}
+  </div>
+</div>
+<button (click)="goBack()" nz-button nzType="dashed"><i nz-icon type="left-circle" theme="fill"></i>Cancel</button>

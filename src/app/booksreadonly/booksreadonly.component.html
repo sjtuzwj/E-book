@@ -1,0 +1,9 @@
+<app-book-search></app-book-search>
+<h2>Books Browser</h2>
+<ul class="books">
+  <li *ngFor="let book of books">
+    <a routerLink="/book-ro/detail/{{book.id}}">
+      <span class="badge">{{book.id}}</span>{{book.name}}
+    </a>
+  </li>
+</ul>
