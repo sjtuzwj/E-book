@@ -1,7 +1,6 @@
 <app-book-search></app-book-search>
 <h2>Books Management</h2>
 <div>
-<div>
   <label>book id:
     <input #bookId />
   </label>
@@ -10,13 +9,37 @@
       <i nz-icon type="plus-circle" theme="fill"></i>
   </button>
 </div>
-<ul class="books">
-  <li *ngFor="let book of books" (click)="onSelect(book)">
-    <a routerLink="/book/detail/{{book.id}}">
-      <span class="badge">{{book.id}}</span>{{book.name}}
-    </a>
-    <button class="delete" title="delete book" nz-button nzType="danger" nzShape="circle"  nzSize="small"
-      (click)="delete(book)"><i nz-icon type="delete" theme="fill"></i></button>
-  </li>
-</ul>
-</div>
+<nz-list [nzDataSource]="books" [nzRenderItem]="book" [nzGrid]="{gutter: 16, span: 6}">
+    <ng-template #book let-book>
+      <nz-list-item [nzContent]="nzContent">
+        <ng-template #nzContent>
+          <nz-card [nzTitle]="book.title">
+                <div>
+                  <img src="{{book.imageUrl}}">
+                </div>
+      <nz-divider></nz-divider>
+                <div class='bookitem'>
+                    <span class="badge">id</span>{{book.id}}
+                </div>
+                <div class='bookitem'>
+                    <span class="badge">name</span>{{book.name}}
+                </div>
+                <div class='bookitem'>
+                    <span class="badge">author</span>{{book.author}}
+                </div>
+                <div class='bookitem'>
+                    <span class="badge">storage</span>{{book.storage}}
+                </div>
+              <a routerLink="/book/detail/{{book.id}}">
+                Book Detail
+              <i nz-icon type="search"></i>
+               </a>
+               <div style="float: right;">
+                  <button class="delete" title="delete book" nz-button nzType="danger" nzShape="circle"  nzSize="small"
+                  (click)="delete(book)"><i nz-icon type="delete" theme="fill"></i></button>
+                </div>
+          </nz-card>
+        </ng-template>
+      </nz-list-item>
+    </ng-template>
+  </nz-list>
