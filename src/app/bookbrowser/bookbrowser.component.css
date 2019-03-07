@@ -1,4 +1,10 @@
 /* BookManageComponent's private CSS styles */
+.blockleft{
+  float: left;
+}
+.blockright{
+  float:right;
+}
 h2{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
