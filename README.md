@@ -4,7 +4,7 @@ This project is an online book store.
 
 Complete:  
 Mainpage, list for user, list for admin, detail for each.  
-
+UI for the dashboard
 Dependencies：  
 Angular 7
 Ng-Zorro（Ant-Design-Angular）  
