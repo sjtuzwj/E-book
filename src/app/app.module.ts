@@ -17,12 +17,19 @@ import { NgZorroAntdModule, NZ_ICON_DEFAULT_TWOTONE_COLOR, NZ_ICONS } from 'ng-z
 
 // 引入你需要的图标，比如你需要 fill 主题的 AccountBook Alert 和 outline 主题的 Alert，推荐 ✔️
 import {SaveFill, LeftCircleFill, ReloadOutline, PlusCircleFill, DeleteFill,
-  DashboardOutline, BarsOutline, EditOutline} from '@ant-design/icons-angular/icons';
+  DashboardOutline, BarsOutline, EditOutline, ShopOutline, UserOutline, ProfileOutline,
+  LoginOutline, IdcardOutline, ShoppingCartOutline, IeOutline} from '@ant-design/icons-angular/icons';
 import { BooksreadonlyComponent } from './booksreadonly/booksreadonly.component';
 import { BookbrowserComponent } from './bookbrowser/bookbrowser.component';
+import { UsermanagementComponent } from './usermanagement/usermanagement.component';
+import { OrdermanagementComponent } from './ordermanagement/ordermanagement.component';
+import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
+import { CartComponent } from './cart/cart.component';
 
 const icons: IconDefinition[] = [ SaveFill, LeftCircleFill, ReloadOutline, PlusCircleFill,
-   DeleteFill, DashboardOutline, BarsOutline, EditOutline];
+   DeleteFill, DashboardOutline, BarsOutline, EditOutline, ShopOutline, UserOutline, ProfileOutline,
+   LoginOutline, IdcardOutline, ShoppingCartOutline, IeOutline];
 
 @NgModule({
   declarations: [
@@ -34,6 +41,11 @@ const icons: IconDefinition[] = [ SaveFill, LeftCircleFill, ReloadOutline, PlusC
     BookSearchComponent,
     BooksreadonlyComponent,
     BookbrowserComponent,
+    UsermanagementComponent,
+    OrdermanagementComponent,
+    SigninComponent,
+    SignupComponent,
+    CartComponent,
   ],
   imports: [
     HttpClientModule,

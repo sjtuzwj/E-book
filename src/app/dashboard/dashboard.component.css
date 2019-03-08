@@ -8,6 +8,11 @@
   [class*='col-']:last-of-type {
     padding-right: 0;
   }
+
+  img {
+    height:
+    7em;
+  }
   a {
     text-decoration: none;
   }
@@ -36,8 +41,8 @@
     padding: 20px;
     text-align: center;
     color: #eee;
-    max-height: 200px;
-    min-height:200px;
+    max-height: 240px;
+    min-height:240px;
     min-width: 120px;
     background-color: lightblue;
     border-radius: 2px;
