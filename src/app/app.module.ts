@@ -6,7 +6,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BooksComponent } from './books/books.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookManageComponent } from './book-manage/book-manage.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -18,7 +18,7 @@ import { NgZorroAntdModule, NZ_ICON_DEFAULT_TWOTONE_COLOR, NZ_ICONS } from 'ng-z
 // 引入你需要的图标，比如你需要 fill 主题的 AccountBook Alert 和 outline 主题的 Alert，推荐 ✔️
 import {SaveFill, LeftCircleFill, ReloadOutline, PlusCircleFill, DeleteFill,
   DashboardOutline, BarsOutline, EditOutline, ShopOutline, UserOutline, ProfileOutline,
-  LoginOutline, IdcardOutline, ShoppingCartOutline, IeOutline} from '@ant-design/icons-angular/icons';
+  LoginOutline, IdcardOutline, ShoppingCartOutline, IeOutline, QuestionCircleOutline , LockOutline} from '@ant-design/icons-angular/icons';
 import { BooksreadonlyComponent } from './booksreadonly/booksreadonly.component';
 import { BookbrowserComponent } from './bookbrowser/bookbrowser.component';
 import { UsermanagementComponent } from './usermanagement/usermanagement.component';
@@ -29,7 +29,7 @@ import { CartComponent } from './cart/cart.component';
 
 const icons: IconDefinition[] = [ SaveFill, LeftCircleFill, ReloadOutline, PlusCircleFill,
    DeleteFill, DashboardOutline, BarsOutline, EditOutline, ShopOutline, UserOutline, ProfileOutline,
-   LoginOutline, IdcardOutline, ShoppingCartOutline, IeOutline];
+   LoginOutline, IdcardOutline, ShoppingCartOutline, IeOutline, QuestionCircleOutline, LockOutline];
 
 @NgModule({
   declarations: [
@@ -53,6 +53,7 @@ const icons: IconDefinition[] = [ SaveFill, LeftCircleFill, ReloadOutline, PlusC
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     NgZorroAntdModule.forRoot()
   ],
   providers: [

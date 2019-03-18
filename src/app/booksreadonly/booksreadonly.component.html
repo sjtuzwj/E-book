@@ -4,7 +4,7 @@
     <ng-template #book let-book>
       <nz-list-item [nzContent]="nzContent">
         <ng-template #nzContent>
-          <nz-card [nzTitle]="book.name">
+          <nz-card [nzTitle]="book.name"  [id]='book.id'  (click)="changecolor(book)">
                 <div>
                   <img src="{{book.imageUrl}}">
                 </div>

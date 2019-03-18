@@ -28,4 +28,11 @@ export class BooksComponent implements OnInit {
     this.bookService.getbooks()
     .subscribe(books => this.books = books);
   }
+  changecolor(book: Book): void {
+    if (document.getElementById(book.id).style.color === 'black') {
+      document.getElementById(book.id).style.color = 'red' ;
+      return;
+    }
+    document.getElementById(book.id).style.color = 'black';
+  }
 }
