@@ -7,6 +7,8 @@ Complete:
 导航栏  
 首页  
 登录注册 only UI  
+用户浏览
+
 
 Dependencies：  
 Angular 7
