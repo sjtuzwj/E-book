@@ -1,4 +1,4 @@
-<app-book-search></app-book-search>
+<app-book-search-local (searched)="onSearched($event)"></app-book-search-local>
 <h2>Books Browser</h2>
 <nz-list [nzDataSource]="books" [nzRenderItem]="book" [nzGrid]="{gutter: 16, span: 6}">
     <ng-template #book let-book>
@@ -18,6 +18,9 @@
       </div>
       <div class='bookitem'>
           <span class="badge">author</span>{{book.author}}
+      </div>
+      <div class='bookitem'>
+          <span class="badge">price</span>{{book.price}}
       </div>
       <div class='bookitem'>
           <span class="badge">storage</span>{{book.storage}}

@@ -26,6 +26,7 @@ import { OrdermanagementComponent } from './ordermanagement/ordermanagement.comp
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { CartComponent } from './cart/cart.component';
+import { BookSearchLocalComponent } from './book-search-local/book-search-local.component';
 
 const icons: IconDefinition[] = [ SaveFill, LeftCircleFill, ReloadOutline, PlusCircleFill,
    DeleteFill, DashboardOutline, BarsOutline, EditOutline, ShopOutline, UserOutline, ProfileOutline,
@@ -46,6 +47,7 @@ const icons: IconDefinition[] = [ SaveFill, LeftCircleFill, ReloadOutline, PlusC
     SigninComponent,
     SignupComponent,
     CartComponent,
+    BookSearchLocalComponent,
   ],
   imports: [
     HttpClientModule,

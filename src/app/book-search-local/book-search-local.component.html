@@ -1,0 +1,8 @@
+<div id="search-local-component">
+  <h2>Book Search</h2>
+  <input #searchBox id="search-box"  placeholder="Input to search books"/>
+  <button class="delete" title="search book" nz-button nzType="normal" nzShape="circle"  nzSize="small"
+          (click)="search(searchBox.value)">
+          <i nz-icon type="search"></i>
+  </button>
+</div>

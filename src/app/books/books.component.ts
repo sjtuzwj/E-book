@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
 import { BookService } from '../book.service';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
@@ -24,15 +25,20 @@ export class BooksComponent implements OnInit {
         this.books.push(book);
       });
   }
+
   getbooks(): void {
     this.bookService.getbooks()
     .subscribe(books => this.books = books);
   }
+
   changecolor(book: Book): void {
     if (document.getElementById(book.id).style.color === 'black') {
       document.getElementById(book.id).style.color = 'red' ;
       return;
     }
     document.getElementById(book.id).style.color = 'black';
+  }
+  onSearched(books$: Observable<Book[]>) {
+    books$.subscribe(books => this.books = books);
   }
 }

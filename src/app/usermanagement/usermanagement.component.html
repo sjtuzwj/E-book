@@ -1,3 +1,21 @@
-<p>
-  usermanagement works!
-</p>
+<nz-table #basicTable [nzData]="users">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Forbiddon</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{data.id}}</td>
+      <td>{{data.name}}</td>
+      <td>{{data.forbid}}</td>
+      <td>  
+          <button (click)="forbid(data)" nz-button nzType="danger"><i nz-icon type="save" theme="fill"></i>Forbid</button>
+          <button (click)="unforbid(data)" nz-button nzType="normal"><i nz-icon type="save" theme="fill"></i>Unforbid</button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

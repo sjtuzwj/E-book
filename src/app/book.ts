@@ -3,5 +3,6 @@ export class Book {
     name: string;
     author: string;
     storage: number;
+    price: number;
     imageUrl: string;
   }

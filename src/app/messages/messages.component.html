@@ -1,6 +1,15 @@
-<div *ngIf="messageService.messages.length">
-  <h2>Messages</h2>
-  <button class="clear"
-          (click)="messageService.clear()" nz-button nzType="danger"><i nz-icon type="sync" theme="outline"></i>Clear</button>
-  <div *ngFor='let message of messageService.messages'> {{message}} </div>
-</div>
+
+<button nz-button nzType="normal" (click)="open()">Message</button>
+    <nz-drawer
+      [nzClosable]="false"
+      [nzVisible]="visible"
+      nzPlacement="bottom"
+      nzTitle="Message"
+      (nzOnClose)="close()"
+    >
+    <div *ngIf="messageService.messages.length">
+      <button class="clear"
+              (click)="messageService.clear()" nz-button nzType="danger"><i nz-icon type="sync" theme="outline"></i>Clear</button>
+      <div *ngFor='let message of messageService.messages'> {{message}} </div>
+    </div>
+    </nz-drawer>

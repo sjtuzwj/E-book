@@ -1,4 +1,4 @@
-<app-book-search></app-book-search>
+<app-book-search-local (searched)="onSearched($event)"></app-book-search-local>
 <h2>Books Management</h2>
 <div>
   <label>book id:
@@ -26,6 +26,9 @@
         </div>
         <div class='bookitem'>
             <span class="badge">author</span>{{book.author}}
+        </div>
+        <div class='bookitem'>
+            <span class="badge">price</span>{{book.price}}
         </div>
         <div class='bookitem'>
             <span class="badge">storage</span>{{book.storage}}

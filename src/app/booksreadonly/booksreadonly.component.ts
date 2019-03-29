@@ -2,7 +2,7 @@ import { OnInit } from '@angular/core';
 import { Book } from '../book';
 import { BookService } from '../book.service';
 import { Component } from '@angular/core';
-
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-booksreadonly',
@@ -25,5 +25,8 @@ export class BooksreadonlyComponent implements OnInit {
       return;
     }
     document.getElementById(book.id).style.color = 'black';
+  }
+  onSearched(books$: Observable<Book[]>) {
+    books$.subscribe(books => this.books = books);
   }
 }
