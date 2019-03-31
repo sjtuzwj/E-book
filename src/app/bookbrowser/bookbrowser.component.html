@@ -1,51 +1,44 @@
 <nz-card>
   <div *ngIf="book" class='browser'>
-    <h2>{{book.name | uppercase}} Browser</h2>
-    <div class='blockleft'>
+    <h2>{{book.name | uppercase}} 浏览</h2>
       <div>
         <img src="{{book.imageUrl}}">
       </div>
       <div>
-        <label>id:
+        <label>书籍号:
         </label>
         <br>
         {{book.id}}
       </div>
       <div>
-        <label>name:
+        <label>书名:
         </label>
         <br>
         {{book.name}}
       </div>
       <div>
-        <label>author:
+        <label>作者:
         </label>
         <br>
         {{book.author}}
       </div>
       <div>
-        <label>price:
+        <label>价格:
         </label>
         <br>
         {{book.price}}
       </div>
       <div>
-        <label>storage:
+        <label>库存:
         </label>
         <br>
         {{book.storage}}
       </div>
       <div>
-        <button (click)="goBack()" nz-button nzType="dashed"><i nz-icon type="left-circle" theme="fill"></i>Cancel</button>
-        <button (click)="goBack()" nz-button nzType="dashed"><i nz-icon type="left-circle" theme="fill"></i>Buy</button>
+        <button (click)="goBack()" nz-button nzType="dashed"><i nz-icon type="left-circle" theme="fill"></i>返回</button>
+        <input #searchBox id="search-box">
+        <button (click)="addToCart(searchBox.value)" nz-button nzType="primary"><i nz-icon type="left-circle" theme="fill"></i>放进购物车</button>
       </div>
-      <div>
-        <button (click)="goBack()" nz-button nzType="dashed"><i nz-icon type="left-circle" theme="fill"></i>Comment</button>
-      <button (click)="goBack()" nz-button nzType="dashed"><i nz-icon type="left-circle" theme="fill"></i>Cart</button></div>
-    </div>
-    <div class='blockright'>
-    </div>
-  
   </div>
   
   </nz-card>

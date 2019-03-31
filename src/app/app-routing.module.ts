@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'usermanagement', component:  UsermanagementComponent},
-  { path: 'cart', component:  CartComponent}
+  { path: 'cart/:id', component:  CartComponent}
 ];
 
 @NgModule({

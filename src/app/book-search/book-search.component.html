@@ -1,5 +1,5 @@
 <div id="search-component">
-    <h2>Book Search</h2>
+    <h2>书籍搜索</h2>
   <input #searchBox id="search-box" (input)="search(searchBox.value)"  placeholder="Input to search books"/><i nz-icon type="search"></i>
   <ul class="search-result">
     <li *ngFor="let book of books$ | async" >

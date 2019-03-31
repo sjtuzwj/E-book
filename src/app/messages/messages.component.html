@@ -1,5 +1,5 @@
 
-<button nz-button nzType="normal" (click)="open()">Message</button>
+<button nz-button nzType="normal" (click)="open()">信息</button>
     <nz-drawer
       [nzClosable]="false"
       [nzVisible]="visible"
@@ -9,7 +9,7 @@
     >
     <div *ngIf="messageService.messages.length">
       <button class="clear"
-              (click)="messageService.clear()" nz-button nzType="danger"><i nz-icon type="sync" theme="outline"></i>Clear</button>
+              (click)="messageService.clear()" nz-button nzType="danger"><i nz-icon type="sync" theme="outline"></i>清空</button>
       <div *ngFor='let message of messageService.messages'> {{message}} </div>
     </div>
     </nz-drawer>

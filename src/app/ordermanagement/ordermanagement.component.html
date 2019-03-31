@@ -1,3 +1,22 @@
-<p>
-  ordermanagement works!
-</p>
+<nz-table #basicTable [nzData]="orders" [nzPageSize]="pagesize">
+  <thead>
+    <tr>
+      <th>用户名</th>
+      <th>书籍号</th>
+      <th>数量</th>
+      <th>时间</th>
+      <th>支付状态</th>
+      <th>订单完成状态</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{data.uid}}</td>
+      <td>{{data.bid}}</td>
+      <td>{{data.num}}</td>
+      <td>{{data.time}}</td>
+      <td>{{data.paid}}</td>
+      <td>{{data.completed}}</td>
+    </tr>
+  </tbody>
+</nz-table>

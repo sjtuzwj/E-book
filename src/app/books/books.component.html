@@ -1,7 +1,7 @@
 <app-book-search-local (searched)="onSearched($event)"></app-book-search-local>
-<h2>Books Management</h2>
+<h2>书籍管理</h2>
 <div>
-  <label>book id:
+  <label>书籍号:
     <input #bookId />
   </label>
   <!-- (click) passes input value to add() and then clears the input -->
@@ -19,22 +19,22 @@
         </div>
     <nz-divider></nz-divider>
         <div class='bookitem'>
-            <span class="badge">id</span>{{book.id}}
+            <span class="badge">书籍号</span>{{book.id}}
         </div>
         <div class='bookitem'>
-            <span class="badge">name</span>{{book.name}}
+            <span class="badge">书名</span>{{book.name}}
         </div>
         <div class='bookitem'>
-            <span class="badge">author</span>{{book.author}}
+            <span class="badge">作者</span>{{book.author}}
         </div>
         <div class='bookitem'>
-            <span class="badge">price</span>{{book.price}}
+            <span class="badge">价格</span>{{book.price}}
         </div>
         <div class='bookitem'>
-            <span class="badge">storage</span>{{book.storage}}
+            <span class="badge">库存</span>{{book.storage}}
         </div>
       <a routerLink="/book/detail/{{book.id}}">
-        Book Detail
+        书籍详情
       <i nz-icon type="search"></i>
        </a>
        <div style="float: right;">

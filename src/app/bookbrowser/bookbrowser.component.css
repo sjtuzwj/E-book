@@ -25,6 +25,9 @@ label {
     margin-bottom: 12px;
   }
 
+  #search-box {
+    width: 50px;
+  }
   /*
   button {
     margin-top: 20px;

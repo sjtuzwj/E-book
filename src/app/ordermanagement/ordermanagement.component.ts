@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NzMessageService, isNotNil } from 'ng-zorro-antd';
+import {OrderService} from '../order.service';
+import {Order} from '../order';
 
 @Component({
   selector: 'app-ordermanagement',
@@ -6,10 +10,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ordermanagement.component.css']
 })
 export class OrdermanagementComponent implements OnInit {
-
-  constructor() { }
-
+  pagesize=5;
+  orders: Order[] = [];
+  constructor(private orderService: OrderService) { }
   ngOnInit() {
+    this.getorders();
   }
-
+  getorders(): void {
+    this.orderService.getorders()
+      .subscribe(orders => this.orders = orders);
+  }
 }

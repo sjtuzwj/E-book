@@ -5,7 +5,7 @@
         <nz-input-group [nzPrefix]="prefixUser">
           <input type="text" nz-input formControlName="userName" placeholder="Username">
         </nz-input-group>
-        <nz-form-explain *ngIf="validateForm.get('userName').dirty && validateForm.get('userName').errors">Please input your username!</nz-form-explain>
+        <nz-form-explain *ngIf="validateForm.get('userName').dirty && validateForm.get('userName').errors">请输入用户名!</nz-form-explain>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
@@ -13,18 +13,18 @@
         <nz-input-group [nzPrefix]="prefixLock">
           <input type="password" nz-input formControlName="password" placeholder="Password">
         </nz-input-group>
-        <nz-form-explain *ngIf="validateForm.get('password').dirty && validateForm.get('password').errors">Please input your Password!</nz-form-explain>
+        <nz-form-explain *ngIf="validateForm.get('password').dirty && validateForm.get('password').errors">请输入密码!</nz-form-explain>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-control>
         <label nz-checkbox formControlName="remember">
-          <span>Remember me</span>
+          <span>记住我</span>
         </label>
-        <a class="login-form-forgot" class="login-form-forgot" (click)='forget()'>Forgot password</a>
-        <button nz-button class="login-form-button" [nzType]="'primary'">Log in</button>
-        Or
-        <a href="/signup">register now!</a>
+        <a class="login-form-forgot" class="login-form-forgot" (click)='forget()'>忘记密码</a>
+        <button nz-button class="login-form-button" [nzType]="'primary'">登录</button>
+        或
+        <a href="/signup">现在注册!</a>
       </nz-form-control>
     </nz-form-item>
   </form>

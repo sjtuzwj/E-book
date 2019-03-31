@@ -1,3 +1,14 @@
-<p>
-  cart works!
-</p>
+<nz-table #basicTable [nzData]="cart.items" [nzPageSize]="pagesize">
+  <thead>
+    <tr>
+      <th>书籍号</th>
+      <th>数量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{data.bid}}</td>
+      <td>{{data.num}}</td>
+    </tr>
+  </tbody>
+</nz-table>

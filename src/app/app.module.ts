@@ -14,7 +14,6 @@ import { BookSearchComponent } from './book-search/book-search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { NgZorroAntdModule, NZ_ICON_DEFAULT_TWOTONE_COLOR, NZ_ICONS } from 'ng-zorro-antd';
-
 // 引入你需要的图标，比如你需要 fill 主题的 AccountBook Alert 和 outline 主题的 Alert，推荐 ✔️
 import {SaveFill, LeftCircleFill, ReloadOutline, PlusCircleFill, DeleteFill,
   DashboardOutline, BarsOutline, EditOutline, ShopOutline, UserOutline, ProfileOutline,
@@ -59,7 +58,7 @@ const icons: IconDefinition[] = [ SaveFill, LeftCircleFill, ReloadOutline, PlusC
     NgZorroAntdModule.forRoot()
   ],
   providers: [
-    { provide: NZ_ICON_DEFAULT_TWOTONE_COLOR, useValue: '#00ff00' }, // 不提供的话，即为 Ant Design 的主题蓝色
+    { provide: NZ_ICON_DEFAULT_TWOTONE_COLOR, useValue: '#00ff00' }, 
     { provide: NZ_ICONS, useValue: icons }
   ],
   bootstrap: [AppComponent]

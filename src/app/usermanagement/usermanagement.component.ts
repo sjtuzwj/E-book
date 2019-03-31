@@ -12,6 +12,7 @@ import {User} from '../user';
 })
 
 export class UsermanagementComponent implements OnInit {
+  pagesize=5;
   users: User[] = [];
   constructor(private userService: UserService) { }
   ngOnInit() {

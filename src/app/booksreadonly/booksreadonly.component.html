@@ -1,5 +1,5 @@
 <app-book-search-local (searched)="onSearched($event)"></app-book-search-local>
-<h2>Books Browser</h2>
+<h2>书籍浏览</h2>
 <nz-list [nzDataSource]="books" [nzRenderItem]="book" [nzGrid]="{gutter: 16, span: 6}">
     <ng-template #book let-book>
       <nz-list-item [nzContent]="nzContent">
@@ -11,23 +11,23 @@
       <nz-divider></nz-divider>
       <div>
         <div class='bookitem'>
-          <span class="badge">id</span>{{book.id}}
+          <span class="badge">书籍号</span>{{book.id}}
       </div>
       <div class='bookitem'>
-          <span class="badge">name</span>{{book.name}}
+          <span class="badge">书名</span>{{book.name}}
       </div>
       <div class='bookitem'>
-          <span class="badge">author</span>{{book.author}}
+          <span class="badge">作者</span>{{book.author}}
       </div>
       <div class='bookitem'>
-          <span class="badge">price</span>{{book.price}}
+          <span class="badge">价格</span>{{book.price}}
       </div>
       <div class='bookitem'>
-          <span class="badge">storage</span>{{book.storage}}
+          <span class="badge">库存</span>{{book.storage}}
       </div>
       </div>
               <a routerLink="/book-ro/detail/{{book.id}}">
-                Book Detail
+                书籍详情
               <i nz-icon type="search"></i>
                </a>
           </nz-card>
