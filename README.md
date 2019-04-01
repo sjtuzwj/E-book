@@ -3,10 +3,12 @@ A web app based on Spring-boot and Angular- for Web-dev course.
 This project is an online book store.     
 
 Fuction Complete:    
-首页导航： 推荐书目（目前算法为选择前四本）   
+首页导航： 推荐书目（目前算法为选择前四本） 
 首页搜索： 根据url重载导航路径（未来拟改成根据用户身份）   
+页眉导航： 目前缺少拓展菜单    
 用户浏览： 本地搜索（基于RxJS的html请求，不是基于前端的请求）   
-书籍增删查改   
+书籍管理       
+书籍查询    
 加入购物车：  相应减少并检测库存（未来拟改成购买后减少库存）   
 订单查询   
 用户管理    
