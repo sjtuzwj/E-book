@@ -5,4 +5,5 @@ export class Book {
     storage: number;
     price: number;
     imageUrl: string;
+    tag: string[];
   }

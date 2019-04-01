@@ -17,7 +17,8 @@ import { NgZorroAntdModule, NZ_ICON_DEFAULT_TWOTONE_COLOR, NZ_ICONS } from 'ng-z
 // 引入你需要的图标，比如你需要 fill 主题的 AccountBook Alert 和 outline 主题的 Alert，推荐 ✔️
 import {SaveFill, LeftCircleFill, ReloadOutline, PlusCircleFill, DeleteFill,
   DashboardOutline, BarsOutline, EditOutline, ShopOutline, UserOutline, ProfileOutline,
-  LoginOutline, IdcardOutline, ShoppingCartOutline, IeOutline, QuestionCircleOutline , LockOutline} from '@ant-design/icons-angular/icons';
+  LoginOutline, IdcardOutline, ShoppingCartOutline, IeOutline, QuestionCircleOutline , LockOutline,
+  UnlockOutline} from '@ant-design/icons-angular/icons';
 import { BooksreadonlyComponent } from './booksreadonly/booksreadonly.component';
 import { BookbrowserComponent } from './bookbrowser/bookbrowser.component';
 import { UsermanagementComponent } from './usermanagement/usermanagement.component';
@@ -29,7 +30,7 @@ import { BookSearchLocalComponent } from './book-search-local/book-search-local.
 
 const icons: IconDefinition[] = [ SaveFill, LeftCircleFill, ReloadOutline, PlusCircleFill,
    DeleteFill, DashboardOutline, BarsOutline, EditOutline, ShopOutline, UserOutline, ProfileOutline,
-   LoginOutline, IdcardOutline, ShoppingCartOutline, IeOutline, QuestionCircleOutline, LockOutline];
+   LoginOutline, IdcardOutline, ShoppingCartOutline, IeOutline, QuestionCircleOutline, LockOutline , UnlockOutline];
 
 @NgModule({
   declarations: [
@@ -58,7 +59,7 @@ const icons: IconDefinition[] = [ SaveFill, LeftCircleFill, ReloadOutline, PlusC
     NgZorroAntdModule.forRoot()
   ],
   providers: [
-    { provide: NZ_ICON_DEFAULT_TWOTONE_COLOR, useValue: '#00ff00' }, 
+    { provide: NZ_ICON_DEFAULT_TWOTONE_COLOR, useValue: '#00ff00' },
     { provide: NZ_ICONS, useValue: icons }
   ],
   bootstrap: [AppComponent]

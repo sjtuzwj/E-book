@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Book } from '../book';
-import { Cart,CartItem } from '../cart'
+import { Cart, CartItem } from '../cart';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { BookService } from '../book.service';
@@ -16,9 +16,9 @@ import { NzNotificationService } from 'ng-zorro-antd';
 export class BookbrowserComponent implements OnInit {
   @Input() book: Book;
   @Input() cart: Cart;
-  item: CartItem[];
+  booknum: number;
   constructor(
-    private notification:NzNotificationService,
+    private notification: NzNotificationService,
     private route: ActivatedRoute,
     private bookService: BookService,
     private cartService: CartService,
@@ -32,18 +32,35 @@ export class BookbrowserComponent implements OnInit {
     this.location.back();
   }
   getbook(): void {
+    this.booknum = 1;
     const id = this.route.snapshot.paramMap.get('id');
     this.bookService.getbook(id)
       .subscribe(book => this.book = book);
   }
-  getcart(): void{  
+  getcart(): void {
     this.cartService.getcart('4396')
       .subscribe(cart => this.cart = cart);
   }
-  addToCart(n: number): void{
+  addToCart(): void {
+    if (this.booknum > this.book.storage) {
+    this.notification.create('warning', 'Add Failed', '商品库存不足');
+    }
     this.getcart();
-    this.cart.items.push({bid:this.book.id,num:n});
+    let i = 0;
+    for ( ; i < this.cart.items.length; i++) {
+        if (this.cart.items[i].id === this.book.id ) {
+          this.cart.items[i].num += this.booknum;
+          this.cart.items[i].amt += this.booknum * this.book.price;
+          break;
+        }
+    }
+    if ( i === this.cart.items.length) {
+      this.cart.items.push({ id: this.book.id, num: this.booknum, prc: this.book.price, amt: this.booknum * this.book.price});
+    }
+    this.book.storage -= this.booknum;
     this.cartService.updatecart(this.cart).subscribe();
-      this.notification.create('success', 'Add Success', '商品已加入购物车');
+    this.bookService.updatebook(this.book)
+      .subscribe();
+    this.notification.create('success', 'Add Success', '商品已加入购物车');
   }
 }

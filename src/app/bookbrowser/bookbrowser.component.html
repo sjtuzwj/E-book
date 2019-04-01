@@ -36,8 +36,8 @@
       </div>
       <div>
         <button (click)="goBack()" nz-button nzType="dashed"><i nz-icon type="left-circle" theme="fill"></i>返回</button>
-        <input #searchBox id="search-box">
-        <button (click)="addToCart(searchBox.value)" nz-button nzType="primary"><i nz-icon type="left-circle" theme="fill"></i>放进购物车</button>
+        <nz-input-number [(ngModel)]="booknum" [nzMin]="1" [nzMax]="book.storage" [nzStep]="1"></nz-input-number>
+        <button (click)="addToCart()" nz-button nzType="primary">放进购物车</button>
       </div>
   </div>
   

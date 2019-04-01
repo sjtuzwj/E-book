@@ -32,8 +32,8 @@ export class InMemoryDataService implements InMemoryDbService {
         author: 'Knuth',
         storage: 5,
         price: 10,
-        imageUrl: '../assets/TAOCP.jpg'},
-        
+        imageUrl: '../assets/TAOCP.jpg'}
+        ,
       {id: 'ISBN7-301-04815-223',
         name: 'Datastructrue',
         author: 'Robert',
@@ -105,6 +105,7 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
     const orders = [
         {
+          id: '1',
           uid: '7777777',
           bid: 'ISBN7-301-04815-10',
           num: 1,
@@ -113,6 +114,7 @@ export class InMemoryDataService implements InMemoryDbService {
           completed: false
         },
         {
+          id: '2',
           uid: '4396',
           bid: 'ISBN7-301-04815-8',
           num: 2,
@@ -121,6 +123,7 @@ export class InMemoryDataService implements InMemoryDbService {
           completed: false
         },
         {
+          id: '3',
           uid: '7777777',
           bid: 'ISBN7-301-04815-11',
           num: 2,
@@ -129,6 +132,7 @@ export class InMemoryDataService implements InMemoryDbService {
           completed: false
         },
         {
+          id: '4',
           uid: '4396',
           bid: 'ISBN7-301-04815-8',
           num: 3,
@@ -137,6 +141,7 @@ export class InMemoryDataService implements InMemoryDbService {
           completed: false
         },
         {
+          id: '5',
           uid: '7777777',
           bid: 'ISBN7-301-04815-10',
           num: 1,
@@ -145,6 +150,7 @@ export class InMemoryDataService implements InMemoryDbService {
           completed: false
         },
         {
+          id: '5',
           uid: '4396',
           bid: 'ISBN7-301-04815-8',
           num: 5,
@@ -157,8 +163,8 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         id: '4396',
         items: [
-          { bid: 'ISBN7-301-04815-8', num: 5} ,
-          { bid: 'ISBN7-301-04815-10', num: 2}
+          { id: 'ISBN7-301-04815-8', num: 5, prc: 10, amt: 50} ,
+          { id: 'ISBN7-301-04815-10', num: 2, prc: 10, amt : 20 }
              ]
       }
     ];

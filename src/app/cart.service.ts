@@ -15,13 +15,7 @@ const httpOptions = {
 export class CartService {
   private cartsUrl = 'api/carts';  // URL to web api
   /** GET carts from the server */
-  getcarts(): Observable<Cart[]> {
-  return this.http.get<Cart[]>(this.cartsUrl)
-  .pipe(
-    tap(_ => this.log('fetched carts')),
-    catchError(this.handleError<Cart[]>('getcarts', []))
-  );
-}
+
 getcart(id: string): Observable<Cart> {
   const url = `${this.cartsUrl}/${id}`;
   return this.http.get<Cart>(url).pipe(
@@ -29,6 +23,7 @@ getcart(id: string): Observable<Cart> {
     catchError(this.handleError<Cart>(`getcart id=${id}`))
   );
 }
+
 /**
  * Handle Http operation that failed.
  * Let the app continue.
@@ -52,16 +47,7 @@ updatecart(cart: Cart): Observable<any> {
     catchError(this.handleError<any>('updatecart'))
   );
 }
-/** DELETE: delete the cart from the server */
-deletecart(cart: Cart): Observable<Cart> {
-  const id = cart.id;
-  const url = `${this.cartsUrl}/${id}`;
 
-  return this.http.delete<Cart>(url, httpOptions).pipe(
-    tap(_ => this.log(`deleted cart id=${id}`)),
-    catchError(this.handleError<Cart>('deletecart'))
-  );
-}
 /** POST: add a new cart to the server */
 addcart(cart: Cart): Observable<Cart> {
   return this.http.post<Cart>(this.cartsUrl, cart, httpOptions).pipe(
@@ -69,6 +55,7 @@ addcart(cart: Cart): Observable<Cart> {
     catchError(this.handleError<Cart>('addcart'))
   );
 }
+
 private log(message: string) {
   this.messageService.add(`cartService: ${message}`);
 }

@@ -27,11 +27,14 @@
   .search-result li a:active {
     color: white;
   }
-  #search-box {
-    width: 200px;
-    height: 20px;
+
+  #searchBox {
+    width: 300px;
   }
   
+  nz-input-group{
+    width: 300px;
+  }
   
   ul.search-result {
     margin-top: 0;

@@ -12,11 +12,14 @@ import {User} from '../user';
 })
 
 export class UsermanagementComponent implements OnInit {
-  pagesize=5;
+  pagesize: number;
+  sortName: string | null = null;
+  sortValue: string | null = null;
   users: User[] = [];
   constructor(private userService: UserService) { }
   ngOnInit() {
     this.getusers();
+    this.pagesize = 5;
   }
   getusers(): void {
     this.userService.getusers()

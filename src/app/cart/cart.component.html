@@ -3,12 +3,21 @@
     <tr>
       <th>书籍号</th>
       <th>数量</th>
+      <th>单价</th>
+      <th>总价</th>
+      <th>操作</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of basicTable.data">
-      <td>{{data.bid}}</td>
+      <td>{{data.id}}</td>
       <td>{{data.num}}</td>
+      <td>{{data.prc}}</td>
+      <td>{{data.amt}}</td>
+      <td>  
+          <button (click)="delete(data.id)" nz-button nzType="danger"><i nz-icon type="delete" theme="outline"></i>删除订单</button>
+      </td>
     </tr>
   </tbody>
 </nz-table>
+<button class='purchase' nz-button nzType="primary">购买</button>

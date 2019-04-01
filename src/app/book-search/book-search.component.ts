@@ -19,7 +19,7 @@ export class BookSearchComponent implements OnInit {
     private location: Location
   ) {}
   mutable(): boolean {
-   return this.location.path() === '/books';
+   return this.location.path() === '/book';
   }
   // Push a search term into the observable stream.
   search(term: string): void {

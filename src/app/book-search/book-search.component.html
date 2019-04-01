@@ -1,6 +1,7 @@
 <div id="search-component">
-    <h2>书籍搜索</h2>
-  <input #searchBox id="search-box" (input)="search(searchBox.value)"  placeholder="Input to search books"/><i nz-icon type="search"></i>
+    <nz-input-group nzSearch [nzSuffix]="suffixIcon">
+        <input #searchBox type="text" nz-input (input)="search(searchBox.value)" placeholder="input search text" />
+      </nz-input-group>
   <ul class="search-result">
     <li *ngFor="let book of books$ | async" >
       <div *ngIf="mutable(); then thenBlock else elseBlock"></div>
@@ -17,3 +18,7 @@
     </li>
   </ul>
 </div>
+
+<ng-template #suffixIcon>
+    <i nz-icon type="search"></i>
+  </ng-template>

@@ -1,4 +1,5 @@
 export class Order {
+    id: string;
     uid: string;
     bid: string;
     num: number;

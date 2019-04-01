@@ -3,7 +3,9 @@ export class Cart {
     items: CartItem[];
 }
 
-export class CartItem{
-    bid: string;
+export class CartItem {
+    id: string;
     num: number;
+    prc: number;
+    amt: number;
 }
