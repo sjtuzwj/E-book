@@ -76,7 +76,7 @@ searchbooks(term: string): Observable<Book[]> {
 /** POST: add a new book to the server */
 addbook(book: Book): Observable<Book> {
   return this.http.post<Book>(this.booksUrl, book, httpOptions).pipe(
-    tap((newbook: Book) => this.log(`added book w/ id=${newbook.id}`)),
+    tap((newbook: Book) => this.log(`added book id=${newbook.id}`)),
     catchError(this.handleError<Book>('addbook'))
   );
 }

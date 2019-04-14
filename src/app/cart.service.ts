@@ -51,7 +51,7 @@ updatecart(cart: Cart): Observable<any> {
 /** POST: add a new cart to the server */
 addcart(cart: Cart): Observable<Cart> {
   return this.http.post<Cart>(this.cartsUrl, cart, httpOptions).pipe(
-    tap((newcart: Cart) => this.log(`added cart w/ id=${newcart.id}`)),
+    tap((newcart: Cart) => this.log(`added cart id=${newcart.id}`)),
     catchError(this.handleError<Cart>('addcart'))
   );
 }
