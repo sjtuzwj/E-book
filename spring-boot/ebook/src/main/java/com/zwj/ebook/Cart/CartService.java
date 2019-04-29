@@ -27,8 +27,8 @@ public class CartService {
 
     public Cart getCart(String uid){
         Cart cart=new Cart();
-        cart.uid=uid;
-        String sql= "SELECT carts.id,carts.num,books.price FROM carts,books Where carts.uid=\""+uid+"\" and carts.id=books.id";
+        cart.id=uid;
+        String sql= "SELECT cartitems.id,cartitems.num,books.price FROM cartitems,books Where cartitems.uid=\""+uid+"\" and cartitems.id=books.id";
         cart.items= jdbcTemplate.query(sql, rowmapper);
         return cart;
     }
@@ -36,10 +36,10 @@ public class CartService {
 
     public void updateCart(Cart cart){
         //困难之处在于要把之前的购物车里的也删了。所以先做删+插的简易版本。
-        String sql="Delete from cartitems where uid=\"%s\"".format(cart.uid);
+        String sql=String.format("Delete from cartitems where uid='%s'",cart.id);
         jdbcTemplate.execute(sql);
         for(CartItem item: cart.items){
-            String itemsql=String.format("insert into cartitems values( %s,%s, %d)",cart.uid,item.id,item.num,item.prc);
+            String itemsql=String.format("insert into cartitems values( '%s','%s', %d)",cart.id,item.id,item.num);
             jdbcTemplate.execute(itemsql);
         }
 }

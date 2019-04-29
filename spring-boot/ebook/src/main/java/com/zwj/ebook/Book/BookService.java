@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -34,13 +36,12 @@ public class BookService {
     }
 
     public void addBook(Book book){
-        String sql= "insert into books values(\"%s\",\"%s\",\"%s\",%d,%d,\"%s\",\"%s\")".
-                format(book.id,book.name,book.author,book.price,book.storage,book.imageurl,book.tag);
+        String sql= String.format("insert into books values('%s','','',0,0,'','');",book.id);
         jdbcTemplate.execute(sql);
     }
 
     public void updateBook(Book book){
-        String sql= String.format("update books set name=\"%s\",author=\"%s\", price=%d, strorage=%d,imageurl=\"%s\",tag=\"%s\" where id=\"%s\""
+        String sql= String.format("update books set name=\"%s\",author=\"%s\", price=%d, storage=%d, imageurl=\"%s\",tag=\"%s\" where id=\"%s\""
                 ,book.name,book.author,book.price,book.storage,book.imageurl,book.tag,book.id);
         jdbcTemplate.execute(sql);
     }
@@ -52,7 +53,7 @@ public class BookService {
 
 
     public List<Book> searchBook(String name){
-        String sql= "SELECT * FROM books Where name=\"% "+name+" %\"";
+        String sql= "SELECT * FROM books Where name Like '%"+name+"%'";
         return jdbcTemplate.query(sql, rowmapper);
     }
 

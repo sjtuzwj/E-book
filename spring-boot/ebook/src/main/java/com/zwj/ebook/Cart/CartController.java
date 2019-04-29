@@ -1,5 +1,33 @@
 package com.zwj.ebook.Cart;
 
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+@CrossOrigin
+@RestController
+@RequestMapping("/api/carts")
 public class CartController {
-    // cart只有对个人开放的api
+
+    private static final Logger logger = LoggerFactory.getLogger(CartController.class);
+
+    @Autowired
+    private CartService bookService;
+
+
+    @RequestMapping(value="/{uid}",method= RequestMethod.GET)
+    public Cart getCart(@PathVariable String uid){
+        logger.info("从数据中读取"+uid);
+        return bookService.getCart(uid);
+    }
+
+    @RequestMapping(value="",method= RequestMethod.PUT)
+    @ResponseBody
+    Cart updateCart(@RequestBody Cart cart){
+        logger.info("修改"+cart.id);
+        bookService.updateCart(cart);
+        return cart;
+    }
 }

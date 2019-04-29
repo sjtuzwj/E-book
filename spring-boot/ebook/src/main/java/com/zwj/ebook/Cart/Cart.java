@@ -2,7 +2,11 @@ package com.zwj.ebook.Cart;
 
 import java.util.List;
 
+import lombok.Setter;
+import lombok.Getter;
+@Setter
+@Getter
 public class Cart {
-    public String uid;
+    public String id;
     public List<CartItem> items;
 }

@@ -19,7 +19,7 @@ public class OrderService {
             order.uid=rs.getString("uid");
             order.bid=rs.getString("bid");
             order.num=rs.getInt("num");
-            order.time=rs.getInt("time");
+            order.time=rs.getString("time");
             order.paid=rs.getBoolean("paid");
             order.completed=rs.getBoolean("completed");
             return order;
@@ -29,17 +29,17 @@ public class OrderService {
     private JdbcTemplate jdbcTemplate;
 
     public List<Order> getOrder(String id){
-        String sql= "SELECT * FROM orders Where ID=\""+id+"\"";
+        String sql= "SELECT * FROM orders Where ID='"+id+"'";
         return jdbcTemplate.query(sql, rowmapper);
     }
 
     public void addOrder(Order order){
-        String sql= String.format("insert into orders values(\"%s\",\"%s\",\"%s\",%d,%d,%b,%b)",order.id,order.uid,order.bid,order.num,order.time,order.paid,order.completed);
+        String sql= String.format("insert into orders values(\"%s\",\"%s\",\"%s\",%d,%s,%b,%b)",order.id,order.uid,order.bid,order.num,order.time,order.paid,order.completed);
         jdbcTemplate.execute(sql);
     }
 
     public void updateOrder(Order order){
-        String sql= String.format("update orders set uid=\"%s\",bid=\"%s\", num=%d, time=%d,paid=%b,completed=%b where id=\"%s\"",order.uid,order.bid,order.num,order.time,order.paid,order.completed,order.id);
+        String sql= String.format("update orders set uid=\"%s\",bid=\"%s\", num=%d, time=%s,paid=%b,completed=%b where id='%s'",order.uid,order.bid,order.num,order.time,order.paid,order.completed,order.id);
         jdbcTemplate.execute(sql);
     }
 
@@ -50,7 +50,7 @@ public class OrderService {
 
 
     public List<Order> searchOrder(String uid){
-        String sql= "SELECT * FROM orders Where uid=\"% "+uid+" %\"";
+        String sql= "SELECT * FROM orders Where uid ='"+uid+"'";
         return jdbcTemplate.query(sql, rowmapper);
     }
 

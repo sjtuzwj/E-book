@@ -1,5 +1,9 @@
 package com.zwj.ebook.User;
 
+import lombok.Setter;
+import lombok.Getter;
+@Setter
+@Getter
 public class User {
     public String id;
     public String mail;

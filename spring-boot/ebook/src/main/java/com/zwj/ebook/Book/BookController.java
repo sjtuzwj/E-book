@@ -7,8 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
-@RequestMapping("/books")
+@RequestMapping("/api/books")
 public class BookController {
 
     private static final Logger logger = LoggerFactory.getLogger(BookController.class);
@@ -29,21 +30,28 @@ public Book getBook(@PathVariable String id){
         }
 
     @RequestMapping(value="/{id}",method= RequestMethod.DELETE)
-    public void deleteBook(@PathVariable String id){
+    public Book deleteBook(@PathVariable String id){
         logger.info("从数据中删除"+id);
         bookService.deleteBook(id);
+        Book book =new Book();
+        book.id = id;
+        return book;
     }
 
     @RequestMapping(value="",method= RequestMethod.POST)
-    public void addBook(Book book){
+    @ResponseBody
+    public Book addBook(@RequestBody Book book){
         logger.info("添加"+book.id);
         bookService.addBook(book);
+        return book;
     }
 
     @RequestMapping(value="",method= RequestMethod.PUT)
-    public void updateBook(Book book){
+    @ResponseBody
+    public Book updateBook(@RequestBody Book book){
         logger.info("修改"+book.id);
         bookService.updateBook(book);
+        return book;
     }
 
     @RequestMapping(value="/",method= RequestMethod.GET)

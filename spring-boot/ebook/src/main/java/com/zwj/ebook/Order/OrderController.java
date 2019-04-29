@@ -6,9 +6,9 @@ import java.util.List;
         import org.slf4j.LoggerFactory;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.web.bind.annotation.*;
-
+@CrossOrigin
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/api/orders")
 public class OrderController {
 
     private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
@@ -29,21 +29,28 @@ public class OrderController {
     }
 
     @RequestMapping(value="/{id}",method= RequestMethod.DELETE)
-    public void deleteOrder(@PathVariable String id){
+    public Order deleteOrder(@PathVariable String id){
         logger.info("从数据中删除"+id);
         orderService.deleteOrder(id);
+        Order i = new Order();
+        i.id =  id;
+        return i;
     }
 
     @RequestMapping(value="",method= RequestMethod.POST)
-    public void addOrder(Order order){
+    @ResponseBody
+    public Order addOrder(@RequestBody Order order){
         logger.info("添加"+order.id);
         orderService.addOrder(order);
+        return order;
     }
 
     @RequestMapping(value="",method= RequestMethod.PUT)
-    public void updateOrder(Order order){
+    @ResponseBody
+    Order updateOrder(@RequestBody Order order){
         logger.info("修改"+order.id);
         orderService.updateOrder(order);
+        return order;
     }
 
     @RequestMapping(value="/",method= RequestMethod.GET)
