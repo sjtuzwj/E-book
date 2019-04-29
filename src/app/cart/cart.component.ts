@@ -7,7 +7,9 @@ import { CartService } from '../cart.service';
 import {NzNotificationService} from 'ng-zorro-antd';
 import { UserService } from '../user.service';
 import { OrderService } from '../order.service';
-import { OrderedListOutline } from '@ant-design/icons-angular/icons/public_api';
+import { OrderedListOutline, FallOutline } from '@ant-design/icons-angular/icons/public_api';
+import { BookService } from '../book.service';
+import { Book } from '../book';
 
 @Component({
   selector: 'app-cart',
@@ -21,6 +23,7 @@ export class CartComponent implements OnInit {
     private cartService: CartService,
     private notification: NzNotificationService,
     private userService: UserService,
+    private bookService: BookService,
     private orderService: OrderService
   ) {}
   ngOnInit(): void {
@@ -52,10 +55,23 @@ export class CartComponent implements OnInit {
       order.time = new Date().getTime().toString();
       order.num = item.num;
       order.id = order.time + order.uid.substr(0 , 2) + order.bid.substr(15 , 3);
-      this.orderService.addorder(order).subscribe();
+      let book: Book;
+      this.bookService.getbook(item.id).subscribe( b => {
+        book = b;
+        book.storage -= item.num;
+        let fail = false;
+        if ( book.storage < 0) {
+          this.notification.create('error', 'Purchase Failed', item.id + '超过库存');
+          fail = true;
+        }
+        if ( fail) {
+            return ;
+        }
+        this.bookService.updatebook(book).subscribe(_ => this.orderService.addorder(order).subscribe());
+      });
     });
     this.cart.items = null;
-    this.cartService.updatecart(this.cart).subscribe(c => {this.notification.create('success', 'Purchase Success', '成功下单');
-  });
-}
-}
+    this.cartService.updatecart(this.cart).subscribe(c => {this.notification.create('success', '你花钱的样子好帅', '购物车已清空');
+  }
+  );
+}}

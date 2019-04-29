@@ -64,10 +64,7 @@ export class BookbrowserComponent implements OnInit {
     if ( i === this.cart.items.length) {
       this.cart.items.push({ id: this.book.id, num: this.booknum, prc: this.book.price, amt: this.booknum * this.book.price});
     }
-    this.book.storage -= this.booknum;
     this.cartService.updatecart(this.cart).subscribe();
-    this.bookService.updatebook(this.book)
-      .subscribe();
     this.notification.create('success', 'Add Success', '商品已加入购物车');
   }
 }

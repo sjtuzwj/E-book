@@ -60,7 +60,7 @@ export class SignupComponent implements OnInit {
       }
       const user = new User();
       user.id = this.validateForm.controls.username.value;
-      user.password = this.validateForm.controls.username.value;
+      user.password = this.validateForm.controls.password.value;
       user.admin = false;
       user.mail = this.validateForm.controls.email.value;
       user.forbid = false;

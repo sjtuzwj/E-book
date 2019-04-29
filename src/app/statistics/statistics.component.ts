@@ -23,6 +23,13 @@ export class StatisticsComponent implements OnInit {
         const dates = this.orders.map(order => order.time);
         this.booknum = nums.reduce( (a , b) => a + b );
         this.option = {
+        toolbox: {
+            feature: {
+                saveAsImage: {},
+                dataZoom : {},
+                dataZoomReset: {},
+            }
+        },
             xAxis: {
                 type: 'category',
                 boundaryGap: false,
