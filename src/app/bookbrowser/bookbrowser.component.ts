@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { BookService } from '../book.service';
 import { CartService } from '../cart.service';
 import { NzNotificationService } from 'ng-zorro-antd';
+import { UserService } from '../user.service';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class BookbrowserComponent implements OnInit {
     private route: ActivatedRoute,
     private bookService: BookService,
     private cartService: CartService,
-    private location: Location
+    private location: Location,
+    private userService: UserService
   ) {}
   ngOnInit(): void {
     this.getbook();
@@ -38,12 +40,17 @@ export class BookbrowserComponent implements OnInit {
       .subscribe(book => this.book = book);
   }
   getcart(): void {
-    this.cartService.getcart('4396')
+    this.cartService.getcart(this.userService.getuser())
       .subscribe(cart => this.cart = cart);
   }
   addToCart(): void {
+    if (!this.userService.getuser()) {
+    this.notification.create('warning', 'Add Failed', '没有登录');
+    return;
+    }
     if (this.booknum > this.book.storage) {
     this.notification.create('warning', 'Add Failed', '商品库存不足');
+    return;
     }
     this.getcart();
     let i = 0;

@@ -64,6 +64,9 @@ deletebook(book: Book): Observable<Book> {
 }
 /* GET books whose name contains search term */
 searchbooks(term: string): Observable<Book[]> {
+  if (term === ' ') {
+    return this.getbooks();
+  }
   if (!term.trim()) {
     // if not search term, return empty book array.
     return of([]);

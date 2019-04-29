@@ -4,6 +4,6 @@ export class Book {
     author: string;
     storage: number;
     price: number;
-    imageUrl: string;
+    imageurl: string;
     tag: string[];
   }

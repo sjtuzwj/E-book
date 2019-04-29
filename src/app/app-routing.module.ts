@@ -10,7 +10,7 @@ import { OrdermanagementComponent } from './ordermanagement/ordermanagement.comp
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { CartComponent } from './cart/cart.component';
-
+import {StatisticsComponent} from './statistics/statistics.component';
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'book', component: BooksComponent },
@@ -22,7 +22,8 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'usermanagement', component:  UsermanagementComponent},
-  { path: 'cart/:id', component:  CartComponent}
+  { path: 'cart', component:  CartComponent},
+  { path: 'statistics', component:  StatisticsComponent}
 ];
 
 @NgModule({

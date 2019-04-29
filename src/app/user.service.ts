@@ -12,6 +12,7 @@ const httpOptions = {
 })
 
 export class UserService {
+  private curuser;
   private usersUrl = 'api/users';  // URL to web api
   /** GET users from the server */
   getusers(): Observable<User[]> {
@@ -22,12 +23,37 @@ export class UserService {
   );
 }
 
-/** PUT: update the user on the server */
-updateuser(user: User): Observable<any> {
-  return this.http.put(this.usersUrl, user, httpOptions).pipe(
-    tap(_ => this.log(`updated user id=${user.id}`)),
-    catchError(this.handleError<any>('updateuser'))
+getuserbyid(uid: string): Observable<User> {
+  const url = `${this.usersUrl}/${uid}`;
+  return this.http.get<User>(url)
+  .pipe(
+    tap(_ => this.log('fetched user')),
+    catchError(this.handleError<User>('getuser'))
   );
+}
+
+/** PUT: add the user on the server */
+adduser(user: User): Observable<User> {
+  return this.http.post<User>(this.usersUrl, user, httpOptions).pipe(
+    tap((newuser: User) => this.log(`add user id=${user.id}`)),
+    catchError(this.handleError<User>('adduser'))
+  );
+}
+
+/** PUT: update the user on the server */
+updateuser(user: User): Observable<User> {
+  return this.http.put<User>(this.usersUrl, user, httpOptions).pipe(
+    tap(_ => this.log(`updated user id=${user.id}`)),
+    catchError(this.handleError<User>('updateuser'))
+  );
+}
+
+setuser(user: string): void {
+  this.curuser = user;
+}
+
+getuser(): string {
+  return this.curuser;
 }
 /**
  * Handle Http operation that failed.

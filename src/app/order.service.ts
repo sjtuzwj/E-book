@@ -21,7 +21,21 @@ export class OrderService {
     catchError(this.handleError<Order[]>('getorders', []))
   );
 }
-
+  getorder(uid: string): Observable<Order[]> {
+    const url = `${this.ordersUrl}/?uid=${uid}`;
+    return this.http.get<Order[]>(url)
+    .pipe(
+      tap(_ => this.log('fetched orders')),
+      catchError(this.handleError<Order[]>('getorders', []))
+    );
+  }
+/** POST: add a new order to the server */
+addorder(order: Order): Observable<Order> {
+  return this.http.post<Order>(this.ordersUrl, order, httpOptions).pipe(
+    tap((neworder: Order) => this.log(`added order id=${neworder.id}`)),
+    catchError(this.handleError<Order>('addorder'))
+  );
+}
 /**
  * Handle Http operation that failed.
  * Let the app continue.

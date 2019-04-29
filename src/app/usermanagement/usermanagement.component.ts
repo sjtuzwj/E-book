@@ -1,7 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NzMessageService, isNotNil } from 'ng-zorro-antd';
+import { NzMessageService, isNotNil, NzNotificationService } from 'ng-zorro-antd';
 import {UserService} from '../user.service';
 import {User} from '../user';
 
@@ -16,7 +16,7 @@ export class UsermanagementComponent implements OnInit {
   sortName: string | null = null;
   sortValue: string | null = null;
   users: User[] = [];
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private notification: NzNotificationService) { }
   ngOnInit() {
     this.getusers();
     this.pagesize = 5;
@@ -27,11 +27,15 @@ export class UsermanagementComponent implements OnInit {
   }
   forbid(user): void {
     user.forbid = true;
-    this.userService.updateuser(user).subscribe();
+    this.userService.updateuser(user).subscribe(_ => {
+      this.notification.create('success', 'Forbid Succeed!', '你号没了！');
+  });
   }
   unforbid(user): void {
     user.forbid = false;
-    this.userService.updateuser(user).subscribe();
+    this.userService.updateuser(user).subscribe(_ => {
+      this.notification.create('success', 'Unforbid Succeed!', '你号有了！');
+  });
   }
 }
 

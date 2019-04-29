@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BooksComponent } from './books/books.component';
@@ -27,6 +25,10 @@ import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { CartComponent } from './cart/cart.component';
 import { BookSearchLocalComponent } from './book-search-local/book-search-local.component';
+import { NgxEchartsModule} from 'ngx-echarts';
+import { StatisticsComponent } from './statistics/statistics.component';
+import 'echarts-gl';
+import { HeadComponent } from './head/head.component';
 
 const icons: IconDefinition[] = [ SaveFill, LeftCircleFill, ReloadOutline, PlusCircleFill,
    DeleteFill, DashboardOutline, BarsOutline, EditOutline, ShopOutline, UserOutline, ProfileOutline,
@@ -48,14 +50,17 @@ const icons: IconDefinition[] = [ SaveFill, LeftCircleFill, ReloadOutline, PlusC
     SignupComponent,
     CartComponent,
     BookSearchLocalComponent,
+    StatisticsComponent,
+    HeadComponent
   ],
   imports: [
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxEchartsModule,
     NgZorroAntdModule.forRoot()
   ],
   providers: [

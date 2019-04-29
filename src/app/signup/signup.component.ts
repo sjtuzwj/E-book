@@ -7,6 +7,9 @@ import {
   Validators
 } from '@angular/forms';
 import { NzNotificationService } from 'ng-zorro-antd';
+import { UserService } from '../user.service';
+import { User } from '../user';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -37,15 +40,35 @@ export class SignupComponent implements OnInit {
       return { confirm: true, error: true };
     }
   }
-  constructor(private fb: FormBuilder, private notification: NzNotificationService) {
+  constructor(
+    private location: Location,
+    private fb: FormBuilder, private notification: NzNotificationService, private userService: UserService) {
   }
 
   register(): void {
-    if (!this.validateForm.controls.agree.value) {
-      this.notification.create('warning', 'Register Error!', 'Sorry, you havn\'t agreed our protocol first.');
-      return;
-    }
-    this.notification.create('success', 'Register Succeed!', 'Hello, ' + this.validateForm.controls.username.value + '!');
+    this.userService.getusers().subscribe(us => {
+      const p = this.validateForm.controls.username.value;
+      let b = false;
+      us.forEach( ele => {
+        if (ele.id === p) {
+          b = true;
+         }
+      });
+      if (b) {
+        this.notification.create('warning', 'Register Error!', '你取名字好像蔡徐坤');
+        return;
+      }
+      const user = new User();
+      user.id = this.validateForm.controls.username.value;
+      user.password = this.validateForm.controls.username.value;
+      user.admin = false;
+      user.mail = this.validateForm.controls.email.value;
+      user.forbid = false;
+      this.userService.adduser(user).subscribe(_ => {
+        this.notification.create('success', 'Register Succeed!', 'Hello, ' + this.validateForm.controls.username.value + '!');
+        this.location.back();
+      });
+    });
   }
 
   ngOnInit(): void {

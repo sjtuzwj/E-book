@@ -15,7 +15,8 @@
         <ng-template #nzContent>
     <nz-card [nzTitle]="book.name"  [id]='book.id'  (click)="changecolor(book)">
         <div>
-          <img src="{{book.imageUrl}}">
+          <img src="{{book.imageurl}}">
+          {{book.imageUrl}}
         </div>
     <nz-divider></nz-divider>
         <div class='bookitem'>

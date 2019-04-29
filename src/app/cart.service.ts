@@ -40,19 +40,12 @@ private handleError<T>(operation = 'operation', result?: T) {
     return of(result as T);
   };
 }
+
 /** PUT: update the cart on the server */
 updatecart(cart: Cart): Observable<any> {
   return this.http.put(this.cartsUrl, cart, httpOptions).pipe(
     tap(_ => this.log(`updated cart id=${cart.id}`)),
     catchError(this.handleError<any>('updatecart'))
-  );
-}
-
-/** POST: add a new cart to the server */
-addcart(cart: Cart): Observable<Cart> {
-  return this.http.post<Cart>(this.cartsUrl, cart, httpOptions).pipe(
-    tap((newcart: Cart) => this.log(`added cart id=${newcart.id}`)),
-    catchError(this.handleError<Cart>('addcart'))
   );
 }
 

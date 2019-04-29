@@ -3,4 +3,5 @@ export class User {
     mail: string;
     forbid: boolean;
     password: string;
+    admin: boolean;
 }

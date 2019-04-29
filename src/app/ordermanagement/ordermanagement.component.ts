@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NzMessageService, isNotNil } from 'ng-zorro-antd';
 import {OrderService} from '../order.service';
 import {Order} from '../order';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-ordermanagement',
@@ -10,14 +11,14 @@ import {Order} from '../order';
   styleUrls: ['./ordermanagement.component.css']
 })
 export class OrdermanagementComponent implements OnInit {
-  pagesize=5;
+  pagesize = 5;
   orders: Order[] = [];
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, private userService: UserService) { }
   ngOnInit() {
     this.getorders();
   }
   getorders(): void {
-    this.orderService.getorders()
+    this.orderService.getorder(this.userService.getuser())
       .subscribe(orders => this.orders = orders);
   }
 }
