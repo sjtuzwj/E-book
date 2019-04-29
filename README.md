@@ -6,8 +6,11 @@ A web app based on Spring-boot and Angular- for Web-dev course.
 This project is an online book store.     
 
 ## 进度
-后端： restfulAPI基本实现
-前端： 非管理员所有功能，管理员部分功能
+后端： 
+- restfulAPI基本实现
+前端： 
+- 非管理员所有功能，管理员部分功能
+- 数据可视化
 
 ## Dependencies   
 Frontend：
