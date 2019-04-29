@@ -6,9 +6,18 @@ A web app based on Spring-boot and Angular- for Web-dev course.
 This project is an online book store.     
 
 ## 进度
-前端由ts编写的内存服务器可基本完成将id映射至restfulAPI的工作。正在这些api逐步迁移至后端
+后端： restfulAPI基本实现
+前端： 非管理员所有功能，管理员部分功能
 
 ## Dependencies   
-Angular 7
-Ng-Zorro（Ant-Design-Angular）  
-Typescript
+Frontend：
+- Angular 7
+- Ng-Zorro（Ant-Design-Angular）  
+- Typescript
+- Echarts
+
+Backend：
+- Springboot
+- Maven
+- Java 8
+
