@@ -4,6 +4,9 @@ import java.util.List;
 
 import lombok.Setter;
 import lombok.Getter;
+
+import javax.persistence.*;
+
 @Setter
 @Getter
 public class Cart {

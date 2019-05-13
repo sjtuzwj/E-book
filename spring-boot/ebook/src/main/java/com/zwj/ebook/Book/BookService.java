@@ -12,53 +12,34 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BookService {
-    private RowMapper<Book> rowmapper=new RowMapper<Book>(){
-    @Override
-    public Book mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Book book = new Book();
-        book.id=rs.getString("ID");
-        book.name=rs.getString("name");
-        book.storage=rs.getInt("storage");
-        book.author=rs.getString("author");
-        book.imageurl=rs.getString("imageurl");
-        book.price=rs.getInt("price");
-        book.tag=rs.getString("tag");
-        return book;
-    }
-};
+public class BookService{
+
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private BookRepository bookRepository;
+
 
     public Book getBook(String id){
-        String sql= "SELECT * FROM books Where ID=\""+id+"\"";
-        return jdbcTemplate.queryForObject(sql, rowmapper);
+        return bookRepository.findById(id).get();
     }
 
-    public void addBook(Book book){
-        String sql= String.format("insert into books values('%s','','',0,0,'','');",book.id);
-        jdbcTemplate.execute(sql);
+    public Book addBook(Book book){
+        return bookRepository.save(book);
     }
 
     public void updateBook(Book book){
-        String sql= String.format("update books set name=\"%s\",author=\"%s\", price=%d, storage=%d, imageurl=\"%s\",tag=\"%s\" where id=\"%s\""
-                ,book.name,book.author,book.price,book.storage,book.imageurl,book.tag,book.id);
-        jdbcTemplate.execute(sql);
+        bookRepository.save(book);
     }
 
     public void deleteBook(String id){
-        String sql= "DELETE FROM books Where ID=\""+id+"\"";
-        jdbcTemplate.execute(sql);
+        bookRepository.deleteById(id);
     }
 
 
     public List<Book> searchBook(String name){
-        String sql= "SELECT * FROM books Where name Like '%"+name+"%'";
-        return jdbcTemplate.query(sql, rowmapper);
+        return bookRepository.findAllByNameContaining(name);
     }
 
     public List<Book> getList(){
-        String sql = "SELECT * FROM books";
-        return jdbcTemplate.query(sql,rowmapper);
+        return bookRepository.findAll();
     }
 }

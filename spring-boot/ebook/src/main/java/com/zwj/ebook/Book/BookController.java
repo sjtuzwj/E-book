@@ -42,8 +42,7 @@ public Book getBook(@PathVariable String id){
     @ResponseBody
     public Book addBook(@RequestBody Book book){
         logger.info("添加"+book.id);
-        bookService.addBook(book);
-        return book;
+        return bookService.addBook(book);
     }
 
     @RequestMapping(value="",method= RequestMethod.PUT)

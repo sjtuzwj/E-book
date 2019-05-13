@@ -11,43 +11,26 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    private RowMapper<User> rowmapper=new RowMapper<User>(){
-        @Override
-        public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-            User user = new User();
-            user.id=rs.getString("ID");
-            user.admin=rs.getBoolean("admin");
-            user.forbid=rs.getBoolean("forbid");
-            user.password=rs.getString("password");
-            user.mail=rs.getString("mail");
-            return user;
-        }
-    };
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private  UserRepository userRepository;
 
     public User getUser(String id){
-        String sql= "SELECT * FROM users Where ID=\""+id+"\"";
-        return jdbcTemplate.queryForObject(sql, rowmapper);
+        return userRepository.findById(id).get();
     }
 
     public void addUser(User user){
-        String sql= String.format("insert into users values(\"%s\",\"%s\",%b, \"%s\",%b)",user.id,user.mail,user.forbid,user.password,user.admin);
-        jdbcTemplate.execute(sql);
+        userRepository.save(user);
     }
 
     public void updateUser(User user){
-        String sql= String.format("update users set mail=\"%s\",forbid=%b, password=\"%s\",admin=%b where id=\"%s\"",user.mail,user.forbid,user.password,user.admin,user.id);
-        jdbcTemplate.execute(sql);
+        userRepository.save(user);
     }
 
     public void deleteUser(String id){
-        String sql= "DELETE FROM users Where ID=\""+id+"\"";
-        jdbcTemplate.execute(sql);
+        userRepository.deleteById(id);
     }
 
     public List<User> getList(){
-        String sql = "SELECT * FROM users";
-        return jdbcTemplate.query(sql,rowmapper);
+        return userRepository.findAll();
     }
 }

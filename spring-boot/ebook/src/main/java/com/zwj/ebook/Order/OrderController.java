@@ -23,7 +23,7 @@ public class OrderController {
     }
 
     @RequestMapping(value="/{id}",method= RequestMethod.GET)
-    public List<Order> getOrder(@PathVariable String id){
+    public Order getOrder(@PathVariable String id){
         logger.info("从数据中读取"+id);
         return orderService.getOrder(id);
     }
