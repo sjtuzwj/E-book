@@ -15,24 +15,24 @@ public class BookController {
     private static final Logger logger = LoggerFactory.getLogger(BookController.class);
 
     @Autowired
-    private BookService bookService;
+    private BookService bookServiceImpl;
 
     @RequestMapping(value="",method=RequestMethod.GET)
     public List<Book> getBooks(){
         logger.info("从数据库读取Book集合");
-        return bookService.getList();
+        return bookServiceImpl.getList();
     }
 
     @RequestMapping(value="/{id}",method= RequestMethod.GET)
 public Book getBook(@PathVariable String id){
         logger.info("从数据中读取"+id);
-        return bookService.getBook(id);
+        return bookServiceImpl.getBook(id);
         }
 
     @RequestMapping(value="/{id}",method= RequestMethod.DELETE)
     public Book deleteBook(@PathVariable String id){
         logger.info("从数据中删除"+id);
-        bookService.deleteBook(id);
+        bookServiceImpl.deleteBook(id);
         Book book =new Book();
         book.id = id;
         return book;
@@ -42,20 +42,20 @@ public Book getBook(@PathVariable String id){
     @ResponseBody
     public Book addBook(@RequestBody Book book){
         logger.info("添加"+book.id);
-        return bookService.addBook(book);
+        return bookServiceImpl.addBook(book);
     }
 
     @RequestMapping(value="",method= RequestMethod.PUT)
     @ResponseBody
     public Book updateBook(@RequestBody Book book){
         logger.info("修改"+book.id);
-        bookService.updateBook(book);
+        bookServiceImpl.updateBook(book);
         return book;
     }
 
     @RequestMapping(value="/",method= RequestMethod.GET)
     public List<Book> searchBook(String name){
         logger.info("从数据中读取"+ name);
-        return bookService.searchBook(name);
+        return bookServiceImpl.searchBook(name);
     }
 }

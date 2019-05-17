@@ -14,7 +14,7 @@ public class OrderController {
     private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     @Autowired
-    private OrderService orderService;
+    private OrderServiceImpl orderService;
 
     @RequestMapping(value="",method=RequestMethod.GET)
     public List<Order> getOrders(){

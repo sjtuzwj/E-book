@@ -14,7 +14,7 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @RequestMapping(value="",method=RequestMethod.GET)
     public List<User> getUsers(){
