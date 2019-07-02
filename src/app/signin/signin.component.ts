@@ -11,6 +11,7 @@ import { UserService } from '../user.service';
 import { User } from '../user';
 import { GroupAst } from '@angular/animations/browser/src/dsl/animation_ast';
 import { selectDropDownAnimation } from 'ng-zorro-antd/core/animation/select-dropdown-animations';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -29,7 +30,8 @@ export class SigninComponent implements OnInit {
   }
 
   constructor(
-    private location: Location, private userService: UserService, private fb: FormBuilder, private notification: NzNotificationService) {
+    private location: Location, private router: Router,
+    private userService: UserService, private fb: FormBuilder, private notification: NzNotificationService) {
   }
 
   forget(): void {
@@ -60,6 +62,6 @@ export class SigninComponent implements OnInit {
       this.userService.setuser(this.user.id);
       this.location.back();
     }
-    });
-  }
+  });
+}
 }

@@ -1,2 +1,27 @@
-<div class="ccc"><button nz-button nzType="primary" (click)="statistic()">查看统计</button></div>
+<div class="ccc"><button nz-button nzType="primary" (click)="searchall()">查看统计</button>
+    累积消费：共购买{{booknum}}件
+</div>
+<div *ngIf="isadmin()">
+        <h2>用户搜索</h2>
+        <nz-input-group nzSearch [nzSuffix]="suffixIcon1">
+            <input #searchBox1 type="text"  nz-input  placeholder="input search text" />
+        </nz-input-group>、
+        <ng-template #suffixIcon1>
+          <button title="search order" nz-button nzType='primary' 
+          (click)="search(searchBox1.value)">
+          <i nz-icon type="search"></i>
+          </button>
+        </ng-template>
+        
+        <h2>商品搜索</h2>
+        <nz-input-group nzSearch [nzSuffix]="suffixIcon2">
+            <input #searchBox2 type="text"  nz-input  placeholder="input search text" />
+        </nz-input-group>
+        <ng-template #suffixIcon2>
+          <button title="search order" nz-button nzType='primary' 
+          (click)="searchb(searchBox2.value)">
+          <i nz-icon type="search"></i>
+          </button>
+        </ng-template>
+      </div>
 <div echarts [options]="option" style="float: left; width :90%">

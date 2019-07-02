@@ -34,6 +34,14 @@
         <br>
         {{book.storage}}
       </div>
+      
+      <div *ngIf="bns">
+        <label>评论:
+        </label>
+        <br>
+        {{bns.comment}}
+      </div>
+      <button (click)="comment()" nz-button nzType="dashed"><i nz-icon type="left-circle" theme="fill"></i>水军点赞</button>
       <div>
         <button (click)="goBack()" nz-button nzType="dashed"><i nz-icon type="left-circle" theme="fill"></i>返回</button>
         <nz-input-number [(ngModel)]="booknum" [nzMin]="1" [nzMax]="book.storage" [nzStep]="1"></nz-input-number>

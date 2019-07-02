@@ -4,8 +4,7 @@ export class Cart {
 }
 
 export class CartItem {
+    uid: string;
     id: string;
     num: number;
-    prc: number;
-    amt: number;
 }

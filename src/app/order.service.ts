@@ -21,8 +21,39 @@ export class OrderService {
     catchError(this.handleError<Order[]>('getorders', []))
   );
 }
+
+
+/* GET books whose name contains search term */
+searchorderb(term: string): Observable<Order[]> {
+  if (term === ' ') {
+    return this.getorders();
+  }
+  if (!term.trim()) {
+    // if not search term, return empty book array.
+    return of([]);
+  }
+  return this.http.get<Order[]>(`${this.ordersUrl}/searchb/${term}`).pipe(
+    tap(_ => this.log(`found books matching "${term}"`)),
+    catchError(this.handleError<Order[]>('searchbooks', []))
+  );
+}
+
+/* GET books whose name contains search term */
+searchorders(term: string): Observable<Order[]> {
+  if (term === ' ') {
+    return this.getorders();
+  }
+  if (!term.trim()) {
+    // if not search term, return empty book array.
+    return of([]);
+  }
+  return this.http.get<Order[]>(`${this.ordersUrl}/search/${term}`).pipe(
+    tap(_ => this.log(`found books matching "${term}"`)),
+    catchError(this.handleError<Order[]>('searchorders', []))
+  );
+}
   getorder(uid: string): Observable<Order[]> {
-    const url = `${this.ordersUrl}/?uid=${uid}`;
+    const url = `${this.ordersUrl}/search/${uid}`;
     return this.http.get<Order[]>(url)
     .pipe(
       tap(_ => this.log('fetched orders')),

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-head',
@@ -7,8 +8,11 @@ import { UserService } from '../user.service';
   styleUrls: ['./head.component.css']
 })
 export class HeadComponent implements OnInit {
-  name = '登录';
+  user: User;
   constructor(private userService: UserService) { }
+  isadmin() {
+    return this.userService.getadmin();
+  }
   logout() {
     this.userService.setuser(undefined);
   }

@@ -11,24 +11,26 @@ import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { CartComponent } from './cart/cart.component';
 import {StatisticsComponent} from './statistics/statistics.component';
+import { AuthGuard } from './auth/auth.guard';
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'book', component: BooksComponent },
   { path: 'book-ro', component: BooksreadonlyComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'book/detail/:id', component: BookManageComponent },
   { path: 'book-ro/detail/:id', component: BookbrowserComponent },
   { path: 'ordermanagement', component: OrdermanagementComponent},
+  { path: 'book', component: BooksComponent, canActivate: [AuthGuard] },
+  { path: 'book/detail/:id', component: BookManageComponent, canActivate: [AuthGuard] },
+  { path: 'usermanagement', component:  UsermanagementComponent, canActivate: [AuthGuard]},
   { path: 'signin', component: SigninComponent},
   { path: 'signup', component: SignupComponent},
-  { path: 'usermanagement', component:  UsermanagementComponent},
   { path: 'cart', component:  CartComponent},
   { path: 'statistics', component:  StatisticsComponent}
 ];
 
 @NgModule({
   exports: [ RouterModule ],
-  imports: [ RouterModule.forRoot(routes) ]
+  imports: [ RouterModule.forRoot(routes)
+  ]
 })
 export class AppRoutingModule {
 }

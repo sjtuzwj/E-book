@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Book } from '../book';
+import { Book, BNS } from '../book';
 import { Cart, CartItem } from '../cart';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -17,6 +17,7 @@ import { UserService } from '../user.service';
 export class BookbrowserComponent implements OnInit {
   @Input() book: Book;
   @Input() cart: Cart;
+  bns: BNS;
   booknum: number;
   constructor(
     private notification: NzNotificationService,
@@ -37,7 +38,14 @@ export class BookbrowserComponent implements OnInit {
     this.booknum = 1;
     const id = this.route.snapshot.paramMap.get('id');
     this.bookService.getbook(id)
-      .subscribe(book => this.book = book);
+      .subscribe(
+        book => {
+          this.book = book;
+          this.bookService.getcomment(id).subscribe( b => this.bns = b );
+        });
+  }
+  comment(): void {
+    this.bookService.addComment(this.book.id, '我是水军').subscribe();
   }
   getcart(): void {
     this.cartService.getcart(this.userService.getuser())
@@ -57,12 +65,12 @@ export class BookbrowserComponent implements OnInit {
     for ( ; i < this.cart.items.length; i++) {
         if (this.cart.items[i].id === this.book.id ) {
           this.cart.items[i].num += this.booknum;
-          this.cart.items[i].amt += this.booknum * this.book.price;
           break;
         }
     }
     if ( i === this.cart.items.length) {
-      this.cart.items.push({ id: this.book.id, num: this.booknum, prc: this.book.price, amt: this.booknum * this.book.price});
+      this.cart.items.push({ uid: this.cart.id, id: this.book.id,
+         num: this.booknum});
     }
     this.cartService.updatecart(this.cart).subscribe();
     this.notification.create('success', 'Add Success', '商品已加入购物车');

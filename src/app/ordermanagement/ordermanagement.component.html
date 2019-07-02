@@ -20,3 +20,32 @@
     </tr>
   </tbody>
 </nz-table>
+
+<div *ngIf="isadmin()">
+  <h2>用户筛选</h2>
+  <nz-input-group nzSearch [nzSuffix]="suffixIcon1">
+      <input #searchBox type="text"  nz-input  placeholder="input search text" />
+  </nz-input-group>
+  
+  
+  <ng-template #suffixIcon1>
+    <button title="search order" nz-button nzType='primary' 
+    (click)="search(searchBox.value)">
+    <i nz-icon type="search"></i>
+    </button>
+  </ng-template>
+
+  
+        
+  <h2>商品筛选</h2>
+  <nz-input-group nzSearch [nzSuffix]="suffixIcon2">
+      <input #searchBox2 type="text"  nz-input  placeholder="input search text" />
+  </nz-input-group>
+
+  <ng-template #suffixIcon2>
+    <button title="search order" nz-button nzType='primary' 
+    (click)="searchb(searchBox2.value)">
+    <i nz-icon type="search"></i>
+    </button>
+  </ng-template>
+</div>

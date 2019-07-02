@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Book } from './book';
+import { Book, BNS } from './book';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -27,6 +27,14 @@ getbook(id: string): Observable<Book> {
   return this.http.get<Book>(url).pipe(
     tap(_ => this.log(`fetched book id=${id}`)),
     catchError(this.handleError<Book>(`getbook id=${id}`))
+  );
+}
+
+getcomment(id: string): Observable<BNS> {
+  const url = `${this.booksUrl}/${id}/comment`;
+  return this.http.get<BNS>(url).pipe(
+    tap(_ => this.log(`fetched book id=${id}`)),
+    catchError(this.handleError<BNS>(`getbook id=${id}`))
   );
 }
 /**
@@ -81,6 +89,14 @@ addbook(book: Book): Observable<Book> {
   return this.http.post<Book>(this.booksUrl, book, httpOptions).pipe(
     tap((newbook: Book) => this.log(`added book id=${newbook.id}`)),
     catchError(this.handleError<Book>('addbook'))
+  );
+}
+
+/** POST: add a new book to the server */
+addComment(id, comment) {
+  return this.http.post<string>(`${this.booksUrl}/${id}/comment` , comment, httpOptions).pipe(
+    tap(_ => this.log(`found books matching "${id}"`)),
+    catchError(this.handleError<Book[]>('searchbooks', []))
   );
 }
 private log(message: string) {

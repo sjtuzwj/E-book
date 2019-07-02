@@ -13,6 +13,7 @@ const httpOptions = {
 
 export class UserService {
   private curuser;
+  private isadmin = false;
   private usersUrl = 'api/users';  // URL to web api
   /** GET users from the server */
   getusers(): Observable<User[]> {
@@ -50,7 +51,17 @@ updateuser(user: User): Observable<User> {
 
 setuser(user: string): void {
   this.curuser = user;
+  if (typeof(this.curuser !== 'undefined')) {
+    this.getuserbyid(this.getuser()).subscribe( t => this.isadmin = t.admin);
+  } else {
+      this.isadmin = false;
+  }
 }
+
+getadmin(): boolean {
+  return this.isadmin;
+}
+
 
 getuser(): string {
   return this.curuser;

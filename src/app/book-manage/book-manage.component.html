@@ -1,8 +1,9 @@
-<nz-card>
+<nz-card >
   <div *ngIf="book">
     <h2>{{book.name | uppercase}} 管理</h2>
     <div>
       <img src="{{book.imageurl}}">
+      <input [(ngModel)]="book.imageurl" placeholder="id"/>
     </div>
     <div>
       <label>书籍号:
