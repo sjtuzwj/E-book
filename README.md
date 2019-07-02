@@ -5,12 +5,17 @@
 A web app based on Spring-boot and Angular- for Web-dev course.  
 This project is an online book store.     
 
-## 进度
-后端： 
-- restfulAPI基本实现
-前端： 
-- 非管理员所有功能，管理员部分功能
-- 数据可视化
+## Hint
+### Angular-Route
+路由拦截所有管理员权限，大而全的框架无敌
+### Ant Design
+UI Powered by 蚂蚁金服
+### E-charts
+统计视图使用E-charts可视化开发，并使用内置框选，便于筛选特定时间区间
+### Mongo-DB
+考虑到书评非结构化，使用Mongo-DB存储
+### Rxjs
+感谢响应式编程，至今那个Search-Box代码都难以践行。
 
 ## Dependencies   
 Frontend：
@@ -21,6 +26,7 @@ Frontend：
 
 Backend：
 - Springboot
+- MongoDB
+- Mysql
 - Maven
 - Java 8
-
